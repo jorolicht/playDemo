@@ -1,0 +1,6 @@
+
+###
+# Dialog
+###
+dlg.prompt.title            = Console
+dlg.prompt.plh.command      = <command> <parameter>

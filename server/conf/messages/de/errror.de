@@ -1,0 +1,19 @@
+
+###
+# Errors
+###
+err00001.ajax.postData                              = Kommunikationsfehler in Routine postData: {0} {1}
+err00002.ajax.decode                                = Fehler beim Dekodieren eines Rückgabewertes: {0} {1}
+err00003.ajax.login                                 = Fehler beim Dekodieren eines Rückgabewertes: {0} {1}
+err00004.ajax.user.login                            = Fehler in Routine login, User-Daten nicht dekodierbar
+err00005.promise.sha256                             = Fehler in Routine sha256: {0}
+err00006.parseJson                                  = Fehler beim Dekodieren von JSON-String: {0} {1}
+err00007.db.user.update                             = Fehler beim Aktualisieren der user Datenbank {0}
+err00008.db.user.insert                             = Fehler beim Einfügen von Daten in die user Datenbank {0}
+err00009.ajax.getData                               = Kommunikationsfehler in Routine getData: {0} {1}
+err00010.db.user.read                               = User nicht in Datenbank vorhanden {0}
+err00011.db.user.select                             = Fehler beim Lesen der user Datenbank {0}
+err00012.ajax.getJson                               = Kommunikationsfehler in Routine getJson: {0} {1}
+err00013.auth.google                                = Fehler bei Google-Authentisierung unterschiedliche Namen: {0} {1}
+err00014.auth.token.invalid                         = Fehler Google-Token ungültig
+err00015.login.invalid                              = E-Mail / Passwort ungültig

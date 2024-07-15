@@ -1,0 +1,49 @@
+
+###
+# Message Entries
+###
+app.version                                         = 2024-03#181
+app.date                                            = 2024-03-07
+app.greeting                                        = Herzlich Willkommen!
+app.title                                           = Playframework Beispiel Programm
+app.lang                                            = de
+app.javascript                                      = Javascript wird benötigt, ist jedoch deaktiviert.  
+app.author                                          = Robert Lichtenegger
+app.copyright                                       = Copyright
+app.website                                         = Your Website 2024
+app.test                                            = Test @$§%&/()öäü€ {0} {1}
+app.noAccount                                       = Bisher keine Kennung?
+app.createOne                                       = Kennung neu anlegen
+app.forgotPassword                                  = Passwort vergessen?
+app.password                                        = Passwort
+app.emailAddress                                    = E-Mail Adresse
+app.invalid.password                                = Passwort ungültig / erforderlich
+app.invalid.email                                   = E-Mail-Format ungültig
+app.btn.login                                       = LOGIN
+app.btn.logout                                      = LOGOUT
+app.btn.console                                     = CONSOLE
+app.loggedInAs                                      = Angemeldet als:
+
+###
+# Sidebar/Sidenav
+###
+sidenav.ChatExample                                 = Chat Beispiel  
+sidenav.UseCase1Sub2                                = UseCase1Sub2
+
+###
+# Usecase Register
+###
+Register.header                                     = Registrierung
+
+
+###
+# Usecase ChatExample
+###
+ChatExample.title.UserId                            = Benutzer Identifikation: {0}
+ChatExample.title.SendMsg                           = Nachricht Senden
+ChatExample.title.RcvMsgs                           = Erhaltene Nachrichten
+ChatExample.lbl.Rcv                                 = Empfänger
+ChatExample.lbl.Msg                                 = Nachricht
+ChatExample.plh.RcvIdExample                        = z.B. iK78T45b 
+ChatExample.plh.sendMsgExample                      = Hella Max Mustermann!
+ChatExample.btn.send                                = SENDEN

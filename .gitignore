@@ -1,0 +1,42 @@
+logs
+help
+project/project
+project/target
+project/metals.sbt
+target
+Procfile
+
+dist
+
+.classpath
+.project
+.settings
+.DS_Store
+.bloop
+.bsp
+.metals
+.history
+.vscode
+
+server/target/
+server/public/bootstrap-5.0.2
+server/public/sbAdmin-7.0.7
+server/public/fontawesome-6.5.1
+server/public/logs
+
+
+# hidden cross project folders
+shared/.js
+shared/.jvm
+
+# temp files
+.~*
+*~
+*.orig
+
+# eclipse
+.scala_dependencies
+.buildpath
+.cache
+.target
+
