@@ -25,14 +25,18 @@ object Main extends ComWrapper with JsWrapper with Mgmt:
 
     // set visibility of basic html elements
     addClass(gE(Main_JavascriptEnableInfo), "d-none")
-    initUser
+    initGlobal
     
     // init app global variables
     setLang(language) 
     setCsrf(csrfToken)
 
-    val evtSource = new dom.raw.EventSource(s"/helper/sse?id=${randomString(6)}")  
-    evtSource.onmessage = { (e: dom.MessageEvent) => debug(s"Message from Server: ${e.data}") }
+    val evtSource = new dom.raw.EventSource(s"/helper/sse?id=${Global.unique}")  
+    evtSource.onmessage = { (e: dom.MessageEvent) => 
+      import usecases.group1.ChatExample
+      debug(s"Message from Server: ${e.data}") 
+      ChatExample.receiveMsg(e.data.toString)
+    }
 
     Logging.setLogLevel("debug")
     debug(s"Main program initialized usecase/param:${usecase}/${param} version:${version} lang:${Global.lang}")

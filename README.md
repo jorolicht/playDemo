@@ -1,5 +1,25 @@
 # Playframework Environment
 
+This is an attempt to create a full-fledged Playframework application with all the needed components. The challenge is to identify a necessary component stack and to keep the components up to date (kind of LAMP stack with playframework and Scala/ScalaJs as a basis).
+
+## Component List
+- Scala - programming language ([Scala] (https://www.scala-lang.org/))
+- Scala.js - write Scala code that runs on the web browser ([Scala.js] (https://www.scala-js.org/))
+- Play Framework - Web Framework for Scala ([Play] (https://www.playframework.com/))
+- Giter8 Template - for Play Framework with Scala.js ([Giter8 Template](https://github.com/vmunier/play-scalajs.g8))
+- uPickle - serialization library for Scala/Scala.js ([uPickle](http://com-lihaoyi.github.io/upickle))
+- Bootstrap - free and open-source frontend framework ([Bootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/))
+- Font Awesome - icon library ([FONT AWESOME](https://github.com/FortAwesome/Font-Awesome))
+- SB Admin - open source admin dashboard template ([Start Bootstrap - SB Admin](https://github.com/StartBootstrap/startbootstrap-sb-admin))
+- Twirl - Html template engine ([Twirl](https://github.com/playframework/twirl))
+- Logging - simple/tiny scalajs logging API ([scalajs-logging](https://github.com/scala-js/scala-js-logging))
+- Mail - a powerful Scala Mailing library ([Play Mailer](https://github.com/playframework/play-mailer))
+- Anorm - simple SQL data access ([Anorm](http://playframework.github.io/anorm/))
+- MySql - popular open source database ([MySql](https://www.mysql.com/))
+- Google Sign In - get user credential ([Google Identity](https://developers.google.com/identity/gsi/web/guides/get-google-api-clientid))
+- Cats - abstractions for functional programming ([Cats](https://typelevel.org/cats/))
+
+
 ## Components
 
 ### Playframework with Scala.js skeleton
@@ -8,7 +28,6 @@ This shows how you can integrate a Play project with a Scala.js project.
 For details see https://github.com/vmunier/play-scalajs.g8
 
 See file projects/plugins.sbt for necessary plugins (versions):
-
 ```
 addSbtPlugin("com.vmunier"               % "sbt-web-scalajs"           % "1.3.0")
 addSbtPlugin("org.scala-js"              % "sbt-scalajs"               % "1.16.0")
@@ -20,7 +39,6 @@ addSbtPlugin("com.typesafe.sbt"          % "sbt-digest"                % "1.1.4"
 
 Set Scala version in build.sbt: ```ThisBuild / scalaVersion := "3.3.3"```
 
-
 ### uPickle
 uPickle (pronounced micro-pickle) is a lightweight JSON and binary (MessagePack) serialization library for Scala and ScalaJs (see http://com-lihaoyi.github.io/upickle/)
 
@@ -30,24 +48,27 @@ Add to build.sbt: ```libraryDependencies += "com.lihaoyi" %%% "upickle" % "3.2.0
 
 ### Bootstrap
 Bootstrap is a free and open-source CSS framework directed at responsive, mobile-first front-end web development.
-See https://getbootstrap.com/docs/5.0/getting-started/introduction
+See ([getbootstrap](https://getbootstrap.com/docs/5.2/getting-started/introduction/))
 
 Copy-paste the stylesheet <link> into your <head> before all other stylesheets to load our CSS.
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> 
 
 Include every Bootstrap JavaScript plugin and dependency with one of our two bundles.
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>
 
 You have to escape the @-Symbol (double @@), twirl-Template!
 
 Or download the distribution and copy it to the public folder, then:
-<link rel="stylesheet" href='@routes.Assets.versioned("bootstrap-5.0.2/css/bootstrap.min.css")'>
-<script src='@routes.Assets.versioned("bootstrap-5.0.2/js/bootstrap.bundle.min.js")'></script>
+<link rel="stylesheet" href='@routes.Assets.versioned("bootstrap-5.2.3/css/bootstrap.min.css")'>
+<script src='@routes.Assets.versioned("bootstrap-5.2.3/js/bootstrap.bundle.min.js")'></script>
 
 
 ### Font Awesome
-Add awesome font (see https://github.com/FontAwesome)
-<link rel="stylesheet" href='routes.Assets.versioned("fontawesome-6.5.1/css/all.min.css")'>
+Add awesome font ([see github](https://github.com/FortAwesome/Font-Awesome))
+Look for older versions "Check the ([releases](https://github.com/FortAwesome/Font-Awesome/releases))
+Download the fontawesome-free-6.6.0-web.zip archive and copy it to the server/public folder.
+
+<link rel="stylesheet" href='routes.Assets.versioned("fontawesome-free-6.6.0-web/css/all.min.css")'>
 
 
 ### SB Admin
@@ -67,6 +88,7 @@ Twirl template files are expected to be placed under src/main/twirl or src/test/
 ### Logging
 On client site I take the simple/tiny scalajs logging API
 See https://github.com/scala-js/scala-js-logging, copied the source on client site to org.scalajs.logging.
+No new version for Scala 3 found (last update in 2020), so copied source and build it.
 On server site standard logging api, see conf/logback.xml for configuration.
 
 

@@ -1,7 +1,6 @@
 @*
  * Template for chat example
  *@
-
 @import usecases.group1.ChatExample.Ids._
 @import cviews.helper.html._
 @import base.UseCaseParam
@@ -17,13 +16,15 @@
             <div class="col-5">
             <div class="input-group mb-2">
               <span class="input-group-text">@gMP("lbl.Rcv")</span>
-              <input type="text" class="form-control" @plh("RcvIdExample")>
+              <input @id(ChatExample_Receiver) type="text" class="form-control" @plh("RcvIdExample")>
             </div>
             </div>
             <div class="input-group mb-2">
               <span class="input-group-text">@gMP("lbl.Msg")</span>
-              <input type="text" class="form-control" @plh("sendMsgExample")>
-              <button @id(ChatExample_Send) class="btn btn-outline-secondary" type="button">@gMP("btn.send")</button>  
+              <input  @id(ChatExample_Message) type="text" class="form-control" @plh("sendMsgExample")>
+              <button @id(ChatExample_Send) class="btn btn-outline-secondary" type="button" @event("onclick")>
+                @gMP("btn.send")
+              </button>  
             </div>
         </div>
       </div>      

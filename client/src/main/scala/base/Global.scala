@@ -3,6 +3,7 @@ package base
 import scala.scalajs.js
 import scala.scalajs.js.annotation.JSGlobal
 import shared.model.User
+import shared._
 import shared.Ids._
 
 def debug(msg: => String) = Logging.logger.debug(msg)
@@ -16,17 +17,11 @@ object Math extends js.Object {
   def random(): Double = js.native
 }
 
-object UUIDGen {
-  def generate: String = {
-    val randomPart = Math.random().toString.substring(2, 15) + System.currentTimeMillis() % 10000
-    randomPart
-  }
-}
-
-
 trait Mgmt extends JsWrapper:
   def validUser = !User.isNil(Global.user)   
-  def initUser = setUser(User.nil)             
+  def initUser   = setUser(User.nil)
+  def initGlobal = Global.unique = randomString(8); setUser(User.nil)
+                 
   def setUser(usr: User) = 
     Global.user = usr
     changeClass(gE(Auth_showLogin), validUser, "disabled")
@@ -42,6 +37,8 @@ trait Mgmt extends JsWrapper:
     setHtml(gE(Auth_LoggedInAs), s"${Global.user.firstname} ${Global.user.lastname}")
 
   def getUser = Global.user  
+
+  def getId   = Global.unique
 
   def setLang(lang: String) = Global.lang = lang  
   def setCsrf(csrf: String) = Global.csrf = csrf 
@@ -77,6 +74,7 @@ object Global extends JsWrapper:
   var csrf = ""
   var lang = ""
   var user = User.nil
+  var unique = ""
 
   // usecase map usecase name to usecase object   
   val ucMap = List(Home, Auth, Console, Error, 

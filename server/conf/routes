@@ -18,7 +18,7 @@ POST       /auth/setUserPassword         controllers.Auth.setUserPassword(email:
 GET        /helper/getMessages           controllers.Helper.getMessages(lang: String ?="")
 GET        /helper/getMsg                controllers.Helper.getMsg(msgCode: String, in1:String ?="", in2:String ?="", in3:String ?="" )
 GET        /helper/sse                   controllers.Helper.sse(id: String ?="")
-GET        /helper/send2sse              controllers.Helper.send2sse(id: String, msg: String)
+GET        /helper/send2sse              controllers.Helper.send2sse(from: String, to: String, msg: String)
 
 # Endpoints for Testing
 GET        /test/auth/getUserVerifyLink  controllers.test.Auth.getUserVerifyLink(email: String ?="", id:Long ?=0L)

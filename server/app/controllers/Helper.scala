@@ -52,7 +52,6 @@ class Helper @Inject()(system: ActorSystem, cc: ControllerComponents, userRepo: 
     *  get message with inserts
     */
   def getMsg(msgCode: String, in1: String, in2: String, in3: String): Action[AnyContent] = Action { implicit request =>
-    
     val messages: Messages = messagesApi.preferred(request)
 
     logger.trace(s"getMsg -> msgCode=${msgCode} in1=${in1} in2=${in2} in3=${in3}")
@@ -63,13 +62,12 @@ class Helper @Inject()(system: ActorSystem, cc: ControllerComponents, userRepo: 
   /**
    *  send2sse - sends a message through server send event mechanism to the client
    */  
-  def send2sse(id: String, msg: String):Action[AnyContent] = Action { implicit request =>
+  def send2sse(from:String, to: String, msg: String):Action[AnyContent] = Action { implicit request =>
     import actors.SSEMgmtActor._
 
-    logger.trace(s"send2sse -> id=${id} msg=${msg} ")
-
-    sseManager ! SendMessage(id, msg)
-    Ok(s"Send message: ${msg} to: ${id}")
+    logger.trace(s"send2sse -> from=${from}  to=${to} msg=${msg}")
+    sseManager ! SendMessage(to, s"${from}: ${msg}")
+    Ok(s"Send to:${to} from:${from} message:${msg}")
   }  
 
 
@@ -99,7 +97,6 @@ class Helper @Inject()(system: ActorSystem, cc: ControllerComponents, userRepo: 
     // objects, suitable for sending data as SSE.
 
     Ok.chunked(source via EventSource.flow).as(ContentTypes.EVENT_STREAM)
-  } 
-
+  }
 
 }

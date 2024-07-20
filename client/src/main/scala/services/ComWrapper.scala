@@ -65,4 +65,7 @@ trait ComWrapper:
   def genPath(route: String, params: List[(String,String)]): String = 
     val urlParams = params.map(x => s"${x._1}=${x._2}").mkString("&") 
     if (params.isEmpty) route else s"${route}?${urlParams}"
+
+
+  def sendChatMsg(from: String, to: String, msg: String) = getData("/helper/send2sse", List(("from",from), ("to",to), ("msg",msg)))  
      

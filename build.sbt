@@ -86,9 +86,8 @@ Global / onLoad := (Global / onLoad).value.andThen(state => "project server" :: 
 //detailed error description
 //set ThisBuild/scalacOptions ++=Seq("-explain")
 
-
 // A simple, no-argument command that prints "Hi",
-//  leaving the current state unchanged.
+// leaving the current state unchanged.
 def hello = Command.command("hello") { state =>
   val directory = "server/conf"
   println(s"Hi! ${directory}")
