@@ -1,5 +1,6 @@
 logs
 help
+doc
 project/project
 project/target
 project/metals.sbt
@@ -19,6 +20,9 @@ dist
 .vscode
 
 server/target/
+server/env/
+server/data/postgres/db
+server/data/mysql/db
 server/public/bootstrap-5.0.2
 server/public/sbAdmin-7.0.7
 server/public/fontawesome-6.5.1

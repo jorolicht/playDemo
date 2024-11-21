@@ -208,8 +208,13 @@ libraryDependencies += "org.typelevel" %% "cats-core" % "2.12.0"   //server
 libraryDependencies += "org.typelevel" %%% "cats-core" % "2.12.0"  //client
 ```
 
+# Production Environment
 
+## Ubuntu 24.04 LTS Server
 
+### Installation of Docker
+
+https://docs.docker.com/engine/install/ubuntu/
 
 
 

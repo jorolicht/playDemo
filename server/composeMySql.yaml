@@ -1,0 +1,64 @@
+# docker compose -f composeMySql.yaml --env-file env/mysql.sh up -d
+# docker compose -f composeMySql.yaml --env-file env/mysql.sh down
+
+services:
+  PlayDemo:
+    image: playdemo-image # Replace this with the actual image name of your Play Framework app
+    build:
+      context: .
+    container_name: playdemo
+
+    labels:
+      MAINTAINER: ${APP_MAINTAINER}
+      VENDOR: ${APP_VENDOR}
+      DESCRIPTION: "This is a docker play framework image example."
+      IMAGE_DESCRIPTION: "This Dockerfile creates an image with the PlayDemo App running on it."
+ 
+    environment:
+      APP_VERSION: ${APP_VERSION}
+
+      # environment read by application.conf
+      #DB_DEFAULT_URL: ${DB_DEFAULT_URL}
+      #DB_DEFAULT_DRIVER: ${DB_DEFAULT_DRIVER}
+      DB_DEFAULT_URL: "jdbc:mysql://db:3306/playdb"
+      DB_DEFAULT_DRIVER: "com.mysql.cj.jdbc.Driver"
+      DB_DEFAULT_USERNAME: ${DB_DEFAULT_USERNAME}
+      DB_DEFAULT_PASSWORD: ${DB_DEFAULT_PASSWORD}
+
+      GOOGLE_CLIENTID: ${GOOGLE_CLIENTID}
+      PLAY_HTTP_PORT: ${PLAY_HTTP_PORT}
+      PLAY_HTTP_SECRET_KEY: ${PLAY_HTTP_SECRET_KEY}
+      PLAY_MAILER_HOST: ${PLAY_MAILER_HOST}
+      PLAY_MAILER_PORT: ${PLAY_MAILER_PORT}
+      PLAY_MAILER_USER: ${PLAY_MAILER_USER}
+      PLAY_MAILER_PASSWORD: ${PLAY_MAILER_PASSWORD}
+      PIDFILE_PATH: ${PIDFILE_PATH}
+      LOGFILE_PATH: "/opt/docker/logs"
+    ports:
+      - "${PLAY_HTTP_PORT}:${PLAY_HTTP_PORT}"      
+    volumes:
+      - "./logs:/opt/docker/logs:rw"
+    depends_on:
+      - db
+    networks:
+      - app-network
+
+  db:
+    image: mysql
+    restart: always
+    environment:
+      MYSQL_ROOT_PASSWORD: ${DB_DEFAULT_ROOT_PASSWORD}
+      MYSQL_DATABASE: "playdb"
+      MYSQL_USER: ${DB_DEFAULT_USERNAME}
+      MYSQL_PASSWORD: ${DB_DEFAULT_PASSWORD}
+#    ports:
+#      - "3317:3306"
+    volumes:
+      - ./data/mysql/db:/var/lib/mysql
+      - ./data/mysql/init/init.sql:/docker-entrypoint-initdb.d/1.sql
+    networks:
+      - app-network  
+   
+networks:
+  app-network:
+    driver: bridge
